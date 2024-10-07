@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1> Exercícios com LocalStorage</h1>
+    <button onclick="armazenarNome('João')"> Armazenar Nome</button>
+    <button onclick="recuperarNome()"> Recuperar Nome</button>
+    <button onclick="removerNome()"> Remover Nome</button>
+
+    <button onclick="armazenarUsuario(
+        { nome: 'Marcia', idade: 30}
+    )"> Armazenar Usuário</button>
+    
+    <button onclick="recuperarUsuario()"> Recuperar Usuário</button>
+    <button onclick="listarItens()"> Listar Itens</button>
+    <button onclick="limparLocalStorage()"> Limpar LocalStorage</button>
+
+
+
+    <script>
+        function armazenarNome(valor){
+            localStorage.setItem('nome', valor)
+        }
+
+        function recuperarNome(){
+            const chave = localStorage.key(0);
+            const nome = localStorage.getItem('nome');
+            alert(` ${chave}: ${nome}`);
+        }
+
+        function removerNome(){
+            localStorage.removeItem('nome');
+        }
+
+        function armazenarUsuario(usuario){
+            localStorage.setItem('usuario', JSON.stringify(usuario));
+
+        }
+
+        function recuperarUsuario(){
+                const usuario = localStorage.getItem('usuario');
+                alert(usuario);
+            }
+        
+        function listarItens(){
+            for(let i = 0; i < localStorage.length; i++ ){
+                const chave = localStorage.key(i);
+                const valor = localStorage.getItem(chave);
+                alert(` ${chave}: ${valor}` );
+            }
+        }
+
+        function limparLocalStorage(){
+
+            localStorage.clear();
+        }
+
+    </script>
+
+</body>
+</html>
